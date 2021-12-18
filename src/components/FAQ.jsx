@@ -2,15 +2,10 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { questions } from "../utils/constants";
+import QuestionItem from "./QuestionItem";
 
 const FAQ = () => {
   const [activeQuestion, setActiveQuestion] = useState("");
-  const [className, setClassName] = useState("");
-  const toggleFaq = (id) => {
-    const selectedQuestion = questions.filter((item) => item.id === id);
-    selectedQuestion[0].isOpen = !selectedQuestion[0].isOpen;
-    setActiveQuestion(selectedQuestion[0]);
-  };
 
   return (
     <FAQContainer className="faq">
@@ -23,28 +18,7 @@ const FAQ = () => {
       </div>
       <div className="faq__boxes">
         {questions.map((question) => (
-          <div className="faq_box" onClick={() => toggleFaq(question.id)}>
-            <div class="faq__title">
-              <p>{question.question}</p>
-              <button type="button" class="faq__btn">
-                <span class="down">
-                  <i class="fas fa-chevron-down"></i>
-                </span>
-                <span class="up">
-                  <i class="fas fa-chevron-up"></i>
-                </span>
-              </button>
-            </div>
-            <div
-              className={
-                activeQuestion.id === question.id
-                  ? "faq__answer active"
-                  : "faq__answer"
-              }
-            >
-              <p>{activeQuestion.answer}</p>
-            </div>
-          </div>
+          <QuestionItem key={question.id} {...question} />
         ))}
       </div>
     </FAQContainer>

@@ -8,12 +8,12 @@ const QuestionItem = ({ id, answer, question }) => {
         <p>{question}</p>
         <button type="button" class="faq__btn">
           {showInfo ? (
-            <span class="down">
+            <span className="down">
               <i className="fas fa-chevron-down"></i>
             </span>
           ) : (
             <span className="up">
-              <i className="fas fa-chevron-up"></i>
+              <p>Hey</p>
             </span>
           )}
         </button>
